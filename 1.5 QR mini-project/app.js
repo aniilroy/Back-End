@@ -1,66 +1,48 @@
-
 import express from "express";
-
 import qr from "qr-image";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.use(express.urlencoded({ extended: true }));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.json());
+
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>QR Generator</title>
-      <style>
-        body{
-          font-family: Arial, sans-serif;
-          text-align:center;
-          margin-top:100px;
-        }
-
-        input{
-          width:300px;
-          padding:10px;
-        }
-
-        button{
-          padding:10px 20px;
-          cursor:pointer;
-        }
-      </style>
-    </head>
-    <body>
-      <h1>QR Code Generator</h1>
-
-      <form action="/generate" method="POST">
-        <input
-          type="text"
-          name="url"
-          placeholder="Enter URL"
-          required
-        >
-        <button type="submit">
-          Generate QR
-        </button>
-      </form>
-    </body>
-    </html>
-  `);
+  res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
 app.post("/generate", (req, res) => {
-  const url = req.body.url;
 
-  const qrCode = qr.image(url, {
-    type: "png"
+  const { text } = req.body;
+
+  if (!text) {
+    return res.status(400).json({
+      error: "Text is required"
+    });
+  }
+
+
+const qrPng = qr.imageSync(text, {
+  type: "png"
+});
+
+const qrBase64 =
+  "data:image/png;base64," +
+  qrPng.toString("base64");
+
+
+
+  res.json({
+    qr: qrBase64
   });
 
-  res.type("png");
-  qrCode.pipe(res);
 });
 
 app.listen(port, () => {

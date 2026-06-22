@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anil QR Generator</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="brand">
+
+      <div class="brand-icon">
+        ▣
+      </div>
+
+      <div class="brand-name">
+        Anil QR Generator
+      </div>
+
+    </div>
+
+    <div class="version-badge">
+      ☆ v2.0.0
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>
+      QR Code
+      <span>Generator</span>
+    </h1>
+
+    <p>
+      Generate beautiful QR codes instantly and download them ⚡
+    </p>
+
+  </section>
+
+  <!-- MAIN CARD -->
+
+  <main class="generator-card">
+
+    <!-- LEFT SIDE -->
+
+    <section class="left-panel">
+
+      <div class="section-title">
+
+        <span class="section-icon">
+          ✎
+        </span>
+
+        <h2>
+          Enter Text or URL
+        </h2>
+
+      </div>
+
+      <div class="textarea-wrapper">
+
+        <textarea
+          id="qrInput"
+          maxlength="500"
+          placeholder="Enter text or paste a URL here..."
+        ></textarea>
+
+        <span class="counter">
+          0/500
+        </span>
+
+      </div>
+
+      <div class="options-title">
+
+        <span class="section-icon">
+          ⚙
+        </span>
+
+        <h2>
+          QR Code Options
+        </h2>
+
+      </div>
+
+      <div class="options-row">
+
+        <div class="option-box">
+
+          <label>
+            Size
+          </label>
+
+          <select id="size">
+
+            <option>
+              512 × 512
+            </option>
+
+            <option>
+              256 × 256
+            </option>
+
+            <option>
+              1024 × 1024
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="option-box">
+
+          <label>
+            Error Correction
+          </label>
+
+          <select id="errorLevel">
+
+            <option>
+              Medium (15%)
+            </option>
+
+            <option>
+              Low (7%)
+            </option>
+
+            <option>
+              High (30%)
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <button id="generateBtn">
+
+        ✨ Generate QR Code
+
+      </button>
+
+    </section>
+
+    <!-- RIGHT SIDE -->
+
+    <section class="right-panel">
+
+      <div class="qr-topbar">
+
+        <div class="section-title">
+
+          <span class="section-icon blue">
+            ▣
+          </span>
+
+          <h2>
+            Your QR Code
+          </h2>
+
+        </div>
+
+        <button id="clearBtn">
+          🗑 Clear
+        </button>
+
+      </div>
+
+      <div class="qr-preview-card">
+
+        <p id="placeholderText">
+            Your QR code will<br>appear here
+        </p>
+
+
+        <img
+          id="qrImage"
+          src=""
+          alt="QR Code"
+        >
+
+      </div>
+
+      <div class="action-row">
+
+        <button id="downloadBtn">
+          ⬇ Download PNG
+        </button>
+
+        <button id="copyBtn">
+          Copy QR
+        </button>
+
+      </div>
+
+      <p class="tip">
+        💡 Tip: You can also right-click on the image to save it
+      </p>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    Made with ❤️ by
+    <span>Anil Roy</span>
+
+    |
+
+    QR Generator v2.0.0
+
+  </footer>
+
+  <script src="/js/index.js"></script>
+
+</body>
+</html>
