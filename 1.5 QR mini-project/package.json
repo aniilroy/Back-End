@@ -1,0 +1,16 @@
+{
+  "name": "qr-mini-project",
+  "version": "1.0.0",
+  "description": "This is a QR code generator project using npm pakages.It will take url input from user and create a QR code.",
+  "license": "ISC",
+  "author": "Anil Roy",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "qr-image": "^3.2.0"
+  }
+}
