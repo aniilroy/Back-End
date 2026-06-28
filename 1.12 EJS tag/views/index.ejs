@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS Practice</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            padding:40px;
+        }
+
+        .card{
+            max-width:700px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,.1);
+        }
+
+        h1{
+            color:#0077ff;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="card">
+
+    <h1>Welcome <%= name %> 🚀</h1>
+
+    <h2>Your Skills</h2>
+
+    <ul>
+
+        <% skills.forEach(function(skill){ %>
+
+            <li><%= skill %></li>
+
+        <% }) %>
+
+    </ul>
+
+    <h2>Result</h2>
+
+    <% if(score >= 80){ %>
+
+        <p>🎉 Excellent! Your score is <%= score %></p>
+
+    <% } else { %>
+
+        <p>📚 Keep practicing. Your score is <%= score %></p>
+
+    <% } %>
+
+</div>
+
+<%- include("footer.ejs") %>
+
+</body>
+</html>
