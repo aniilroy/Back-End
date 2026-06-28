@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Practice</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        padding: 30px;
+    }
+
+    .card {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        color: #2563eb;
+    }
+
+    li {
+        margin: 5px 0;
+    }
+</style>
+</head>
+<body>
+
+    <h1>Student Information</h1>
+
+    <h2>Name: <%= student.name %></h2>
+
+    <p>Age: <%= student.age %></p>
+
+    <p>Course: <%= student.course %></p>
+
+    <h3>Skills</h3>
+
+    <ul>
+
+        <% student.skills.forEach(skill => { %>
+
+            <li><%= skill %></li>
+
+        <% }) %>
+
+    </ul>
+
+    <h3>Address</h3>
+
+    <p><%= student.address.city %></p>
+
+    <p><%= student.address.state %></p>
+
+</body>
+</html>
