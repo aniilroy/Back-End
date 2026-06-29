@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student CRUD App</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background:#f5f5f5;
+            padding:40px 20px;
+        }
+
+        .container{
+            max-width:900px;
+            margin:auto;
+            background:#fff;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        h1{
+            margin-bottom:25px;
+            text-align:center;
+        }
+
+        h2{
+            margin-bottom:15px;
+        }
+
+        .add-form{
+            display:flex;
+            gap:10px;
+            margin-bottom:25px;
+        }
+
+        input{
+            flex:1;
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:6px;
+        }
+
+        button{
+            padding:10px 16px;
+            border:1px solid #ccc;
+            border-radius:6px;
+            background:white;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#f3f3f3;
+        }
+
+        .student-list{
+            margin-top:20px;
+        }
+
+        .student-card{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:15px;
+
+            margin-bottom:12px;
+
+            border:1px solid #e5e5e5;
+            border-radius:8px;
+        }
+
+        .student-form{
+            display:flex;
+            gap:10px;
+            flex:1;
+        }
+
+        .student-form input{
+            flex:1;
+        }
+
+        .actions{
+            display:flex;
+            gap:10px;
+            margin-left:15px;
+        }
+
+        .routes{
+            margin-top:30px;
+            border-top:1px solid #ddd;
+            padding-top:20px;
+        }
+
+        code{
+            display:block;
+            background:#f7f7f7;
+            padding:10px;
+            border-radius:6px;
+            margin-bottom:10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Student CRUD App</h1>
+
+        <h2>Add Student</h2>
+
+        <form
+            action="/students"
+            method="POST"
+            class="add-form"
+        >
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Student Name"
+                required
+            >
+
+            <input
+                type="text"
+                name="course"
+                placeholder="Course"
+                required
+            >
+
+            <button type="submit">
+                Add Student
+            </button>
+
+        </form>
+
+        <h2>Student List</h2>
+
+        <div class="student-list">
+
+            <% students.forEach(student => { %>
+
+                <div class="student-card">
+
+                    <form
+                        action="/update/<%= student.id %>"
+                        method="POST"
+                        class="student-form"
+                    >
+
+                        <input
+                            type="text"
+                            name="name"
+                            value="<%= student.name %>"
+                            required
+                        >
+
+                        <input
+                            type="text"
+                            name="course"
+                            value="<%= student.course %>"
+                            required
+                        >
+
+                        <button type="submit">
+                            Save
+                        </button>
+
+                    </form>
+
+                    <div class="actions">
+
+                        <form
+                            action="/delete/<%= student.id %>"
+                            method="POST"
+                        >
+
+                            <button type="submit">
+                                Delete
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            <% }) %>
+
+        </div>
+
+        <div class="routes">
+
+            <h2>API Routes</h2>
+
+            <code>GET /students</code>
+            <code>POST /students</code>
+            <code>POST /update/:id</code>
+            <code>POST /delete/:id</code>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
