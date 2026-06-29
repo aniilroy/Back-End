@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>API Key Header Practice</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            padding:40px;
+        }
+
+        .card{
+            max-width:700px;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+        }
+
+        li{
+            margin:10px 0;
+        }
+
+        code{
+            background:#eee;
+            padding:4px 8px;
+            border-radius:5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>API Key Authentication Demo 🔑</h1>
+
+        <p>
+            API Key Loaded From .env:
+        </p>
+
+        <code>
+            <%= apiKey %>
+        </code>
+
+        <hr>
+
+        <h2>Users from API</h2>
+
+        <ul>
+
+            <% users.forEach(user => { %>
+
+                <li>
+
+                    <strong>
+                        <%= user.name %>
+                    </strong>
+
+                    <br>
+
+                    <%= user.email %>
+
+                </li>
+
+            <% }) %>
+
+        </ul>
+
+    </div>
+
+</body>
+
+</html>
